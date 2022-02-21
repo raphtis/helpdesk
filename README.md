@@ -1,7 +1,7 @@
 
 # Help Desk App
 
-A cimple app for users to create tickets and view/add updates/status changes for related issues. 
+A simple app for users to create tickets and view/add updates/status changes for related issues. 
 
 
 ## Tech Stack
