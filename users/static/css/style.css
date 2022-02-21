@@ -1,0 +1,128 @@
+
+a {
+    text-decoration: none;
+    color: #253434;
+}
+
+a:hover, .btn:hover, .nav-link:hover {
+    color: #AF4433;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+.card-img-top {
+    width: 200px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.site_header {
+    background-color: #66958D;
+    color: #F8E0D3;
+}
+
+.nav-link {
+    color: #253434;
+    font-size: 1.5rem;
+}
+
+.nav-link:hover {
+    font-size: 1.75rem;
+}
+
+.login-container {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border: 3px solid #253434;
+    color: #253434;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.register-container {
+    margin-top: 20px;
+    width: 50%;
+    border: 3px solid #253434;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ticket-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.comment-form-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.comment-display-container {
+    border: 3px solid #66958D;
+    width: 600px;
+    margin-bottom: 40px;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+
+.action-history {
+    margin-bottom: 40px;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+
+.user_tickets, .user_comments {
+    border: 1px solid #253434;
+
+    margin-bottom: 10px;
+}
+/* .action-history p {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #253434;
+} */
+
+.bill-img {
+    padding-bottom: 10px;
+    width: 60px;
+}
+
+.ticket-table {
+    border: 3px solid #253434;
+    border-radius: 0.25px;
+    color: #253434;
+}
+
+.card {
+    border: 3px solid #253434;
+    border-radius: 0.25px;
+    color: #253434;
+}
+
+hr {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+h1 {
+    color: #253434;
+}
+
+.btn {
+    color: #F8E0D3;
+}
+
+.btn:hover {
+    color: #F8E0D3;
+}

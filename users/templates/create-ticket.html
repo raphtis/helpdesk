@@ -1,0 +1,49 @@
+{% include 'nav_bar.html'%}
+
+<h1 class="text-center m-5">Submit a Ticket</h1>
+
+<div class="container mx-auto form-container" style="width:600px">
+    {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+        <div class="card mx-auto" style="width:600px">
+            <div class="card-body">
+                <form action="/create_ticket" method="POST">
+                {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="subject">Subject <input type="text" name="subject" class="form-control" placeholder="What is the tickets's related subject?"></label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ticket_type">Ticket Type</label>
+                        <select class="form-select" aria-label="Default select example" name="ticket_type">
+                            <option selected>Select Ticket Type</option>
+                            <option value="Hardware">Hardware</option>
+                            <option value="Software">Software</option>
+                            <option value="Misc">Misc.</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ticket_status">Ticket Status</label>
+                        <select class="form-select" aria-label="Default select example" name="ticket_status">
+                            <option selected>Select Ticket Status</option>
+                            <option value="New">New</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ticket_description">Ticket Description</label><textarea type="text" name="ticket_description" class="form-control" placeholder="Please provide a description of the issue." rows="3"></textarea>
+                    </div>
+                    <div class="col text-center mt-3">
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                        <button class="btn btn-secondary" href="/dashboard"><a href="/dashboard" style="color: #F8E0D3;">Cancel</a></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

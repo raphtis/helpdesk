@@ -1,0 +1,65 @@
+{% include 'nav_bar.html'%}
+
+<div class="container mb-5">
+    <h1 class="text-center m-5">{{user.first_name}}'s Dashboard</h1>
+    <div class="dashboard-container">
+        <div class="card" style="width: 25rem;">
+            <div class="card-body">
+                <h5 class="card-title">Create a Ticket</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Subheading</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="/ticket_form" class="card-link">Create a Ticket</a>
+            </div>
+        </div>
+        <div class="card" style="width: 25rem;">
+            <div class="card-body">
+                <h5 class="card-title">Submitted Ticket Total - </h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{user.user_tickets.all | length}}</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+            </div>
+        </div>
+        <div class="card" style="width: 25rem;">
+            <div class="card-body">
+                <h5 class="card-title">My Account</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="/profile" class="card-link">Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mx-auto form-container" style="width:600px">
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    </div>
+</div>
+<div class="container table-container mt-5" style="width: 800px">
+    <table class="table table-hover table-light ticket-table">
+    <thead>
+        <tr>
+        <th scope="col">Ticket ID </th>
+        <th scope="col">Subject </th>
+        <th scope="col">Ticket Status </th>
+        <th scope="col">Ticket Description</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for ticket in all_tickets reversed%}
+        <tr>
+            <td class="text-center"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
+            <td><a href="/ticket/{{ticket.id}}/edit">{{ticket.subject}}</a></td>
+            <td>{{ticket.ticket_status}}</td>
+            <td>{{ticket.ticket_description}}</td>
+        </tr>
+    {%endfor%}
+
+    </tbody>
+    </table>
+    </div>
+</div>

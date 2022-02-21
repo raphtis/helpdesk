@@ -1,0 +1,49 @@
+{% include 'nav_bar.html'%}
+<h1 class="text-center m-5">My Account Details</h1>
+
+<div class="d-grid justify-content-center card-container">
+    <div class="card mb-3" style="width: 40rem;">
+        <div class="card-body">
+        <form action="/profile/{{user.id}}/update" method="POST">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="first_name">First Name: <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}" disabled></label>
+            </div>
+            <div class="form-group row">
+                <label for="last_name">Last Name: <input type="text" class="form-control" name="last_name" value="{{user.last_name}}" disabled></label>
+            </div>
+            <div class="form-group row">
+                <label for="email">Email: <input type="text" class="form-control" name="email" value="{{user.email}}" disabled></label>
+            </div>
+            <div class="col text-center mt-3">
+                <input type="submit" value="Update" class="btn btn-secondary" hidden>
+            </div>
+        </form>
+            <div class="col">Member since {{user.created_at}}</div>
+        </div>
+    </div>
+    <div class="action-history container mx-auto">
+        <div class="container user_tickets">
+            <h4 class="mt-3">Tickets Created by {{user.first_name}}</h4>
+            {% for ticket in all_tickets %}
+                {% if ticket.created_by.id == user.id %}
+            
+                <li><a href="/ticket/{{ticket.id}}/edit">Ticket Subject: {{ticket.subject}} Ticket ID#{{ticket.id}}</a></li>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="container user_comments">
+            <h4 class="mt-3">Comments Added by {{user.first_name}}</h4>
+            {% for comment in all_comments%}
+                {% if comment.poster.id == user.id  %}
+                    <div>
+                        <h5>Ticket Subject:</h5>
+                        <h6 style="text-decoration:underline">{{comment.ticket.subject}}</h6></div>
+                    <p>Ticket Comment: {{comment.comment}} </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+

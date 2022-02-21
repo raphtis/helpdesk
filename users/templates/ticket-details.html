@@ -1,0 +1,80 @@
+{% include 'nav_bar.html'%}
+
+<h1 class="text-center m-5">Ticket ID - {{ticket.id}}</h1>
+<div class="container mx-auto form-container" style="width:600px">
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+<div class="ticket-container">
+    <div class="card mx-auto" style="width:600px">
+        <div class="card-body">
+            <form action="/ticket/{{ticket.id}}/update" method="POST">
+            {% csrf_token %}
+                <div class="form-group row">
+                    <label for="subject">Subject <input type="text" name="subject" class="form-control" value="{{ticket.subject}}"></label>
+                </div>
+                <hr />
+                <div class="form-group row">
+                    <label for="ticket_type">Ticket Type</label>
+                    <select class="form-select" aria-label="Default select example" name="ticket_type">
+                        <option selected>{{ticket.ticket_type}}</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Software">Software</option>
+                        <option value="Misc">Misc.</option>
+                    </select>
+                </div>
+                <hr />
+                <div class="form-group row">
+                    <label for="ticket_status">Ticket Status</label>
+                    <select class="form-select" aria-label="Default select example" name="ticket_status">
+                        <option selected>{{ticket.ticket_status}}</option>
+                        <option value="New">New</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
+                <hr />
+                <div class="form-group row">
+                    <label for="ticket_description">Ticket Description</label><textarea type="text" name="ticket_description" class="form-control" placeholder="Ticket Description" rows="3">{{ticket.ticket_description}}</textarea>
+                </div>
+                <div class="col text-center mt-3">
+                    <button type="submit" class="btn btn-secondary">Update</button>
+                    <button class="btn btn-secondary" href="/dashboard"><a href="/dashboard" style="color: #F8E0D3;">Cancel</a></button>
+                    <button class="btn btn-secondary" href="/dashboard"><a href="/ticket/{{ticket.id}}/delete" style="color: #F8E0D3;">Delete</a></button>
+                </div>
+            </form>
+        </div>
+        <a href="/comment_form">Add an Update</a>
+    </div>
+</div>
+<div>
+    <div class="comment-form-container">
+        <div class="card mx auto" style="width:600px">
+            <div class="card-body">
+                <h4>Ticket Comments</h4>
+                <form action="/add_comment/{{ticket.id}}/" method="POST">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="comment">Enter a comment</label><textarea type="text" name="comment" class="form-control sm" placeholder="Provide update or additional info here." rows="3"></textarea>
+                </div>
+                <div class="col text-center mt-3">
+                    <input type="submit" value="Submit" class="btn btn-secondary">
+                    <button class="btn btn-secondary" href="/ticket/{{ticket.id}}/edit">Cancel</button>
+                </div>
+                </form>
+            </div>
+            <div class="comment-display-container container mx auto">
+                {%for comment in ticket.post_comments.all%}
+                    <h6>Update by: </h6>
+                    <p>{{comment.poster.first_name}} {{comment.poster.last_name}} -
+                    {{ comment.comment}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>        
+</div>
