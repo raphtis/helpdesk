@@ -49,7 +49,6 @@
                 </div>
             </form>
         </div>
-        <a href="/comment_form">Add an Update</a>
     </div>
 </div>
 <div>
@@ -69,8 +68,9 @@
                 </form>
             </div>
             <div class="comment-display-container container mx auto">
+                    <h5>Updates - </h5>
                 {%for comment in ticket.post_comments.all%}
-                    <h6>Update by: </h6>
+                    <h6>Comment by: </h6>
                     <p>{{comment.poster.first_name}} {{comment.poster.last_name}} -
                     {{ comment.comment}}</p>
                 {% endfor %}
@@ -78,3 +78,4 @@
         </div>
     </div>        
 </div>
+{% include 'footer.html'%}

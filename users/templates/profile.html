@@ -22,12 +22,19 @@
             <div class="col">Member since {{user.created_at}}</div>
         </div>
     </div>
+    
     <div class="action-history container mx-auto">
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
+                {% endfor %}
+            </ul>
+            {% endif %}
         <div class="container user_tickets">
             <h4 class="mt-3">Tickets Created by {{user.first_name}}</h4>
             {% for ticket in all_tickets %}
                 {% if ticket.created_by.id == user.id %}
-            
                 <li><a href="/ticket/{{ticket.id}}/edit">Ticket Subject: {{ticket.subject}} Ticket ID#{{ticket.id}}</a></li>
                 {% endif %}
             {% endfor %}
@@ -40,10 +47,11 @@
                     <div>
                         <h5>Ticket Subject:</h5>
                         <h6 style="text-decoration:underline">{{comment.ticket.subject}}</h6></div>
-                    <p>Ticket Comment: {{comment.comment}} </p>
+                    <p>Ticket Comment: {{comment.comment}} | <a href="/comment/{{comment.id}}/delete">Delete Comment</a></p>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
 </div>
 
+{% include 'footer.html'%}

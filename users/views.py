@@ -170,5 +170,13 @@ def add_comment(request, ticket_id):
     Comment.objects.create(comment=request.POST['comment'], poster=poster, ticket=ticket)
     return redirect('/success')
 
+def delete_comment(request, comment_id):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    to_delete = Comment.objects.get(id=comment_id)
+    to_delete.delete()
+    messages.success(request, "Comment removed from ticket.")
+    return redirect('/profile')
+
 def success(request):
     return render(request, 'success.html')

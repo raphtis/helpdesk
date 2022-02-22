@@ -19,5 +19,6 @@ urlpatterns = [
     path('ticket/<int:ticket_id>/update', views.update_ticket),
     path('ticket/<int:ticket_id>/delete', views.delete_ticket),
     path('add_comment/<int:ticket_id>/', views.add_comment),
+    path('comment/<int:comment_id>/delete', views.delete_comment),
     
 ]
