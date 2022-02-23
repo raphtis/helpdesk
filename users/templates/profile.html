@@ -22,36 +22,70 @@
             <div class="col">Member since {{user.created_at}}</div>
         </div>
     </div>
-    
-    <div class="action-history container mx-auto">
-            {% if messages %}
-            <ul class="messages">    
-                {% for message in messages %}    
-                    <ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
-                {% endfor %}
-            </ul>
-            {% endif %}
-        <div class="container user_tickets">
-            <h4 class="mt-3">Tickets Created by {{user.first_name}}</h4>
-            {% for ticket in all_tickets %}
-                {% if ticket.created_by.id == user.id %}
-                <li><a href="/ticket/{{ticket.id}}/edit">Ticket Subject: {{ticket.subject}} Ticket ID#{{ticket.id}}</a></li>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-        <div class="container user_comments">
-            <h4 class="mt-3">Comments Added by {{user.first_name}}</h4>
-            {% for comment in all_comments%}
-                {% if comment.poster.id == user.id  %}
-                    <div>
-                        <h5>Ticket Subject:</h5>
-                        <h6 style="text-decoration:underline">{{comment.ticket.subject}}</h6></div>
-                    <p>Ticket Comment: {{comment.comment}} | <a href="/comment/{{comment.id}}/delete">Delete Comment</a></p>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
 </div>
+
+
+<div class="container table-container mt-5 action-history" style="width: 900px">
+    <h4 class="text-center">Tickets Created by {{user.first_name}}</h4>
+    <table class="table table-hover table-light ticket-table">
+    <thead>
+        <tr>
+        <th scope="col" class="text-center">Ticket ID </th>
+        <th scope="col">Subject </th>
+        <th scope="col">Ticket Status </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for ticket in all_tickets reversed%}
+        {% if ticket.created_by.id == user.id %}
+        <tr>
+            <td class="text-center"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
+            <td><a href="/ticket/{{ticket.id}}/edit">{{ticket.subject}}</a></td>
+            <td>{{ticket.ticket_status}}</td>
+        </tr>
+        {% endif %}
+    {%endfor%}
+
+    </tbody>
+    </table>
+</div>
+
+<div class="container mx-auto form-container" style="width:600px">
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<div class="container table-container mt-5 action-history" style="width: 900px">
+    <h4 class="text-center">Comments Added by {{user.first_name}}</h4>
+    <table class="table table-hover table-light ticket-table">
+    <thead>
+        <tr>
+        <th scope="col" class="text-center">Ticket ID </th>
+        <th scope="col">Subject </th>
+        <th scope="col">Ticket Comment </th>
+        <th scope="col">Remove Comment </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for comment in all_comments reversed%}
+        {% if comment.poster.id == user.id %}
+        <tr>
+            <td class="text-center">{{comment.ticket.id}}</></td>
+            <td><a href="/ticket/{{ticket.id}}/edit">{{comment.ticket.subject}}</a></td>
+            <td>{{comment.comment}}</td>
+            <td class="text-center"><a href="/comment/{{comment.id}}/delete">Remove</a></td>
+        </tr>
+        {% endif %}
+    {%endfor%}
+
+    </tbody>
+    </table>
+</div>
+
 
 {% include 'footer.html'%}
