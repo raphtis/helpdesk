@@ -51,6 +51,8 @@ a:hover, .btn:hover, .nav-link:hover {
     border: 3px solid #253434;
     border-radius: 5px;
     padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 160px;
 }
 
 .dashboard-container {
