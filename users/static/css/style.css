@@ -1,37 +1,302 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-a {
-    text-decoration: none;
-    color: #253434;
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: rgb(214, 228, 229);
+    --second-color: rgb(140, 72, 67);
+    --accent-color: rgb(229, 143, 101);
+    --title-color: rgb(126, 145, 129);
+    --text-color: rgb(46, 53, 50);
+    --body-color: rgb(255, 252, 247);
+
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Poppins", sans-serif;
+    --h2-font-size: 1.25rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
 }
 
-a:hover, .btn:hover, .nav-link:hover {
-    color: #AF4433;
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+    :root {
+    --h2-font-size: 1.75rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+    }
+}
+
+
+/*=============== DEFAULTS ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--body-color);
+    font-family: var(--body-font);
+    color: var(--text-color);
+}
+
+
+/*=============== NAV BAR ===============*/
+nav {
+    display: flex;
+    justify-content: right;
+}
+
+li { 
+    list-style-type: none;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+li:nth-child(5){
+    margin-right: 4rem;
+}
+
+li:hover {
     letter-spacing: 1px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
-.card-img-top {
-    width: 200px;
+
+.nav-links a {
+    color: inherit;
+}
+
+.nav-links a:hover {
+    color: inherit;
+}
+
+.title {
+    cursor: pointer;
+    text-align: center;
+    margin: 0 2rem;
+    padding: 2rem;
+    font-size: 4rem;
+    border: solid 1px lightgray;
+    border-radius: 15px;
+    transition: all .3s;
+    font-family: 'Lora', serif;
+    color: var(--body-color);
+    background-color: var(--title-color);
+}
+
+.title:hover {
+    background-color: rgb(126, 145, 115);
+}
+
+
+/*=============== CARD SECTION ===============*/
+.cards {
+    display: flex;
+}
+
+.card {
+    border: 2px solid lightgray;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: all .3s;
+    margin: 2.5rem;
+}
+
+.card:hover {
+    box-shadow: 0 10px 18px 0 rgba(0,0,0,0.2);
+}
+
+.card h4 {
+    color: var(--title-color);
+}
+
+.card img { 
+    display: block;
+    width: 50%;
+    height: auto;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card h4,
+.card p,
+.card a {
+    margin: 1.5rem;
+}
+.card a {
+    color: inherit;
+    text-decoration: none;
+    transition: all .3s;
+}
+
+.card a:hover {
+    letter-spacing: 1px;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-buttons {
+    cursor: pointer;
+    display: block;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-bottom: 1.75rem;
+    background-color: var(--accent-color);
+    font-size: 1.25rem;
+    padding: .5rem;
+    border-radius: 5px; 
+    transition: all .3s;
 }
 
-.site_header {
-    background-color: #66958D;
-    color: #F8E0D3;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-family: 'Lobster Two', cursive;
+.card a {
+    color: var(--body-color);
 }
 
-.nav-link {
-    color: #253434;
-    font-size: 1.5rem;
+.card-buttons:hover {
+    background-color: rgb(220, 130, 95);
+    letter-spacing: 1px;
 }
 
-.nav-link:hover {
-    font-size: 1.75rem;
+/*=============== LOGIN/REG SECTION ===============*/
+
+.login-card { 
+    border: 2px solid lightgray;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: all .3s;
+    display: block;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4rem;
+    width: 50%;
+    padding: 2rem;
 }
+
+.login-card h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.inputs {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.inputs span {
+    font-size: .75rem;
+    margin-bottom: 1rem;
+    padding: .25rem;
+}
+
+input[type=email],
+input[type=password] {
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    padding: .5rem;
+    font-size: 1rem;
+    margin-bottom: .5rem;
+    transition: all .3s;
+}
+
+input:focus {
+    border: 1px solid rgb(220, 130, 95);
+    background-color: rgb(226, 225, 225);
+}
+
+label {
+    margin-bottom: .25rem;
+}
+
+.login-button {
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.75rem;
+    background-color: var(--title-color);
+    color: var(--body-color);
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+    border-radius: 5px; 
+    transition: all .3s;
+}
+
+.login-button:hover {
+    background-color:rgb(126, 145, 115);
+    letter-spacing: 1px;
+}
+
+.reg-link {
+    display: flex;
+    justify-content: end;
+    margin-top: 1.5rem;
+    font-size: .75rem;
+}
+
+.reg-link a:hover {
+    color: inherit;
+}
+
+a {
+    margin-left: 1px;
+    margin-right: 1px;
+    color: inherit;
+    transition: all .3s;
+    text-decoration: none;
+}
+
+a:hover{
+    letter-spacing: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .login-container {
     width: 50%;
@@ -88,10 +353,7 @@ a:hover, .btn:hover, .nav-link:hover {
     margin-bottom: 5px;
 }
 
-.bill-img {
-    padding-bottom: 10px;
-    width: 60px;
-}
+
 
 .ticket-table {
     border: 3px solid #253434;
@@ -100,11 +362,7 @@ a:hover, .btn:hover, .nav-link:hover {
     margin-bottom: 4.5rem;
 }
 
-.card {
-    border: 3px solid #253434;
-    border-radius: 0.25px;
-    color: #253434;
-}
+
 
 hr {
     width: 400px;
@@ -125,21 +383,48 @@ h1 {
     color: #F8E0D3;
 }
 
-
+/*=============== FOOTER ===============*/
 .footer-container {
-    background-color: lightgray;
+    background-color: var(--second-color);
     width: auto;
     padding: 10px;
-    opacity: 75%;
 }
 
 .footer-container a {
-    font-size: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--body-color);
+    transition: all .3s;
 }
 
 .footer-container a:hover {
-    text-decoration: underline;
-    color: #AF4433;
-    font-size: 12px;
+    color: var(--body-color);
+    letter-spacing: 1px;
+
+}
+
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices max-width: 480px */
+
+
+/* For medium devices min-width: 481px */
+@media screen and (max-width: 769px) { 
+    .cards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card img {
+        display: block;
+        width: auto;
+        height: auto;
+        margin-top: 1.75rem;
+        margin-bottom: 1.75rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
 }
 
