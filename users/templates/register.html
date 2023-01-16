@@ -1,36 +1,48 @@
 {% include 'nav_bar.html'%}
-<h1 class="text-center m-4">Register to get started!</h1>
-<div class="container register-container">
-    <div class="container">
+
+
+
+
+<div class="login-card">
+    <h1>Register to get started!</h1>
         {% if messages %}
         <ul class="messages">    
             {% for message in messages %}    
-                <li {% if message.tags %} class="{{ message.tags }} alert alert-danger"{% endif %}>{{ message }}</li>    
+                <ul {% if message.tags %} class="{{ message.tags }} alert alert-danger"{% endif %}>{{ message }}</ul>    
             {% endfor %}
         </ul>
         {% endif %}
-    </div>
-    <form action='/register' method="POST">
+    <form action="/register" method="POST">
         {% csrf_token %}
-        <div class="form-group row">
-            <label for="first_name">First Name: <input type="text" class="form-control" name="first_name"></label>
-        </div>
-        <div class="form-group row">
-            <label for="last_name">Last Name: <input type="text" class="form-control" name="last_name"></label>
-        </div>
-        <div class="form-group row">
-            <label for="email">Email: <input type="text" class="form-control" name="email"></label>
-        </div>
-        <div class="form-group row">
-            <label for="password">Password: <input type="password" class="form-control" name="password"></label>
-        </div>
-        <div class="form-group row">
-            <label for="confirm_password">Confirm Password: <input type="password" class="form-control" name="confirm_password"></label>
-        </div>
-        <div class="col text-center">
-            <button class="btn btn-secondary m-3" type="submit">Create Account</button>
-            <button class="btn btn-secondary"><a href="/" style="color: #F8E0D3;">Cancel</a></button>
+
+
+
+        <div class="inputs">
+            <label for="first_name">first name</label>
+            <input class='form-inputs' type="text" placeholder="First Name" name="first_name">
+
+
+            <label for="last_name">last name</label>
+            <input class='form-inputs' type="text" placeholder="Last Name" name="last_name">
+
+
+            <label for="email">email</label>
+            <input class='form-inputs' type="email" placeholder="Email" name="email" />
+
+
+            <label for="password">password</label>
+            <input class='form-inputs' type="password" placeholder="Password" name="password" />
+
+            <label for="confirm_password">confirm password</label>
+            <input class='form-inputs' type="password" placeholder="Confirm Password" name="confirm_password" />
+
+            <div class='button-div'>
+                <button class="reg-button" type="submit">create account</button>
+                <a href="/">cancel</a>
+            </div>
+
         </div>
     </form>
 </div>
+
 {% include 'footer.html'%}

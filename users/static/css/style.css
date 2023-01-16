@@ -52,6 +52,35 @@ body {
     color: var(--text-color);
 }
 
+a {
+    margin-left: 1px;
+    margin-right: 1px;
+    color: inherit;
+    transition: all .3s;
+    text-decoration: none;
+}
+
+a:hover{
+    letter-spacing: 1px;
+    text-decoration: underline;
+}
+
+input:focus {
+    border: 1px solid rgb(220, 130, 95);
+    background-color: rgb(226, 225, 225);
+}
+
+label {
+    margin-bottom: .25rem;
+    opacity: 50%;
+}
+
+hr {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
 
 /*=============== NAV BAR ===============*/
 nav {
@@ -61,7 +90,6 @@ nav {
 
 li { 
     list-style-type: none;
-    padding: 1.25rem;
     cursor: pointer;
     transition: all .3s;
 }
@@ -72,7 +100,7 @@ li:nth-child(5){
 
 li:hover {
     letter-spacing: 1px;
-    font-size: 1.25rem;
+    text-decoration: underline;
 }
 
 .nav-links a {
@@ -191,7 +219,7 @@ button {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 4rem;
-    width: 50%;
+    max-width: 40%;
     padding: 2rem;
 }
 
@@ -214,8 +242,7 @@ button {
     padding: .25rem;
 }
 
-input[type=email],
-input[type=password] {
+.form-inputs {
     outline: none;
     border-radius: 10px;
     border: 1px solid lightgray;
@@ -225,14 +252,7 @@ input[type=password] {
     transition: all .3s;
 }
 
-input:focus {
-    border: 1px solid rgb(220, 130, 95);
-    background-color: rgb(226, 225, 225);
-}
 
-label {
-    margin-bottom: .25rem;
-}
 
 .login-button {
     cursor: pointer;
@@ -243,12 +263,29 @@ label {
     background-color: var(--title-color);
     color: var(--body-color);
     font-size: 1.25rem;
-    padding: 1rem 1.5rem;
+    padding: .75rem 1.25rem;
     border-radius: 5px; 
     transition: all .3s;
 }
 
 .login-button:hover {
+    background-color:rgb(126, 145, 115);
+    letter-spacing: 1px;
+}
+
+
+.reg-button {
+    cursor: pointer;
+    margin:  1rem 0;
+    background-color: var(--title-color);
+    color: var(--body-color);
+    font-size: 1.25rem;
+    padding: .75rem;
+    border-radius: 5px; 
+    transition: all .3s;
+}
+
+.reg-button:hover {
     background-color:rgb(126, 145, 115);
     letter-spacing: 1px;
 }
@@ -264,19 +301,17 @@ label {
     color: inherit;
 }
 
-a {
-    margin-left: 1px;
-    margin-right: 1px;
+
+
+.button-div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+}
+
+.button-div a:hover {
     color: inherit;
-    transition: all .3s;
-    text-decoration: none;
 }
-
-a:hover{
-    letter-spacing: 1px;
-}
-
-
 
 
 
@@ -364,16 +399,7 @@ a:hover{
 
 
 
-hr {
-    width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-}
 
-h1 {
-    color: #253434;
-}
 
 .btn {
     color: #F8E0D3;
@@ -386,8 +412,9 @@ h1 {
 /*=============== FOOTER ===============*/
 .footer-container {
     background-color: var(--second-color);
-    width: auto;
-    padding: 10px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 
 .footer-container a {
@@ -400,7 +427,6 @@ h1 {
 .footer-container a:hover {
     color: var(--body-color);
     letter-spacing: 1px;
-
 }
 
 

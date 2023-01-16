@@ -6,22 +6,22 @@
         <img src="/static/img/help-desk.png" alt="">
         <h4>Support When You Need It</h4>
         <p>Read more about the support and resources accessible after registering. Also learn what drives helpdesk and meet our founder Bill Penguin</p>
-        <a class="card-buttons" href="#">About</a>
+        <a class="card-buttons" href="#">about</a>
     </div>
 
     <div class="card">
         <img src="/static/img/layout.png" alt="">
-        <h4>Support When You Need It</h4>
+        <h4>Ticket Status at a Glance</h4>
         <p>Read more about the support and resources accessible after registering. Also learn what drives helpdesk and meet our founder Bill Penguin</p>
-        <a class="card-buttons" href="/dashboard">Dashboard</a>
+        <a class="card-buttons" href="/dashboard">dashboard</a>
     </div>
 
 
     <div class="card">
         <img src="/static/img/registration.png" alt="">
-        <h4>Support When You Need It</h5>
+        <h4>Become a New User</h5>
         <p>Read more about the support and resources accessible after registering. Also learn what drives helpdesk and meet our founder Bill Penguin</p>
-        <a class="card-buttons" href="/register">Dashboard</a>
+        <a class="card-buttons" href="/new_user">register</a>
     </div>
 </section>
 
@@ -30,7 +30,7 @@
 
 
 <div class="login-card">
-    <h1>Login</h1>
+    <h1>Login to get started!</h1>
         {% if messages %}
         <ul class="messages">    
             {% for message in messages %}    
@@ -44,11 +44,12 @@
 
 
         <div class="inputs">
-            <label for="email">Email</label>
-            <input type="email" placeholder="Email" name="email" />
+            <label for="email">email</label>
+            <input class='form-inputs' type="email" placeholder="Email" name="email" />
             <span>We'll never share your email with anyone.</span>
-            <label for="password">Password</label>
-            <input type="password" placeholder="Password" name="password" />
+            
+            <label for="password">password</label>
+            <input class='form-inputs' type="password" placeholder="Password" name="password" />
             <span>Secure from end to end.</span>
 
             <button class="login-button" type="submit">login</button>
