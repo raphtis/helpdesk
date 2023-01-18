@@ -218,7 +218,7 @@ button {
     margin-top: 2rem;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 4rem;
+    margin-bottom: 10rem;
     max-width: 40%;
     padding: 2rem;
 }
@@ -228,6 +228,24 @@ button {
     text-align: center;
     margin-bottom: 1.25rem;
 }
+
+.reg-card {
+    display: block;
+    max-width: 60%;
+    margin: 10rem auto;
+    border: 2px solid lightgray;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: all .3s;
+    padding: 2rem;
+}
+
+.reg-card h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
 
 .inputs {
     display: grid;
@@ -333,27 +351,7 @@ button {
 
 
 
-.login-container {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    border: 3px solid #253434;
-    color: #253434;
-    border-radius: 5px;
-    padding: 5px;
-}
 
-.register-container {
-    margin-top: 20px;
-    width: 50%;
-    border: 3px solid #253434;
-    border-radius: 5px;
-    padding: 5px;
-    margin-top: 20px;
-    margin-bottom: 160px;
-}
 
 .dashboard-container {
     display: flex;
@@ -413,7 +411,7 @@ button {
 .footer-container {
     background-color: var(--second-color);
     width: 100%;
-    position: fixed;
+    position: relative;
     bottom: 0;
 }
 
@@ -429,6 +427,11 @@ button {
     letter-spacing: 1px;
 }
 
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+}
 
 
 /*=============== BREAKPOINTS ===============*/

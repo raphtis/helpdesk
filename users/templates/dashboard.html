@@ -1,34 +1,38 @@
 {% include 'logged_navbar.html'%}
 
-<div class="container mb-5">
-    <h1 class="text-center m-5">{{user.first_name}}'s Dashboard</h1>
-    <div class="dashboard-container">
-        <div class="card" style="width: 25rem;">
+<div class="dashboard-container">
+    {% comment %} <h1>{{user.first_name}}'s Dashboard</h1> {% endcomment %}
+    <div class="dashboard-cards">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Create a Ticket</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Subheading</h6>
+                <h6 class="card-subtitle">Subheading</h6>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="/ticket_form" class="card-link">Create a Ticket</a>
             </div>
         </div>
-        <div class="card" style="width: 25rem;">
+
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Ticket Total - </h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{user.user_tickets.all | length}}</h6>
+                <h6 class="card-subtitle">{{user.user_tickets.all | length}}</h6>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
             </div>
         </div>
-        <div class="card" style="width: 25rem;">
+
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">My Account</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <h6 class="card-subtitle">Card subtitle</h6>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="/profile" class="card-link">Profile</a>
             </div>
         </div>
     </div>
 </div>
+
+
 <div class="container mx-auto form-container" style="width:600px">
     <div>
     {% if messages %}
