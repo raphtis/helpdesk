@@ -332,30 +332,17 @@ button {
 }
 
 
+/*=============== DASHBOARD ===============*/
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.dashboard-container {
+.dashboard-cards {
     display: flex;
-    justify-content: space-evenly;
+}
+
+.dashboard-cards a {
+    color: inherit;
 }
 
 .form-container {
@@ -387,7 +374,6 @@ button {
 }
 
 
-
 .ticket-table {
     border: 3px solid #253434;
     border-radius: 0.25px;
@@ -411,7 +397,8 @@ button {
 .footer-container {
     background-color: var(--second-color);
     width: 100%;
-    position: relative;
+    padding: 1rem;
+    position: absolute;
     bottom: 0;
 }
 
@@ -440,7 +427,8 @@ button {
 
 /* For medium devices min-width: 481px */
 @media screen and (max-width: 769px) { 
-    .cards {
+    .cards,
+    .dashboard-cards {
         display: flex;
         flex-direction: column;
     }

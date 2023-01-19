@@ -5,8 +5,8 @@
     <div class="dashboard-cards">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Create a Ticket</h5>
-                <h6 class="card-subtitle">Subheading</h6>
+                <h5 class="card-title"><a href="/ticket_form" class="card-link">New Ticket</a></h5>
+                <p class="card-subtitle">Subheading</p>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="/ticket_form" class="card-link">Create a Ticket</a>
             </div>
@@ -14,8 +14,8 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Ticket Total - </h5>
-                <h6 class="card-subtitle">{{user.user_tickets.all | length}}</h6>
+                <h5 class="card-title"><a href="/profile" class="card-link">Created tickets</a></h5>
+                <p class="card-subtitle">{{user.user_tickets.all | length}}</p>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
             </div>
