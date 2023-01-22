@@ -23,8 +23,8 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">My Account</h5>
-                <h6 class="card-subtitle">Card subtitle</h6>
+                <h5 class="card-title"><a href="/profile" class="card-link">Profile</a></h5>
+                <p class="card-subtitle">Card subtitle</p>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="/profile" class="card-link">Profile</a>
             </div>
@@ -44,8 +44,8 @@
     {% endif %}
     </div>
 </div>
-<div class="container table-container mt-5" style="width: 900px">
-    <table class="table table-hover table-light ticket-table">
+<div class="table-container">
+    <table class="table">
     <thead>
         <tr>
         <th scope="col">Ticket ID </th>
@@ -57,10 +57,11 @@
     <tbody>
     {% for ticket in all_tickets reversed%}
         <tr>
-            <td class="text-center"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
+            <td class="table-data"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
             <td><a href="/ticket/{{ticket.id}}/edit">{{ticket.subject}}</a></td>
-            <td>{{ticket.ticket_status}}</td>
+            <td class="table-data">{{ticket.ticket_status}}</td>
             <td>{{ticket.ticket_description}}</td>
+            <td class="data-edit"><a href="/ticket/{{ticket.id}}/edit"><i class="ri-edit-box-line"></i></a></td>
         </tr>
     {%endfor%}
 

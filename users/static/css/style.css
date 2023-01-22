@@ -112,7 +112,6 @@ li:hover {
 }
 
 .title {
-    cursor: pointer;
     text-align: center;
     margin: 0 2rem;
     padding: 2rem;
@@ -335,8 +334,6 @@ button {
 /*=============== DASHBOARD ===============*/
 
 
-
-
 .dashboard-cards {
     display: flex;
 }
@@ -383,8 +380,6 @@ button {
 
 
 
-
-
 .btn {
     color: #F8E0D3;
 }
@@ -392,6 +387,47 @@ button {
 .btn:hover {
     color: #F8E0D3;
 }
+
+
+/*=============== TABLE SECTION ===============*/
+
+.table-container {
+    width: 80%;
+    border: 5px solid var(--title-color);
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table th {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.table-data {
+    text-align: center;
+}
+
+.data-edit {
+    font-size: 1.5rem;
+}
+
+.table a:hover {
+    color: var(--body-color);
+}
+
+.table { 
+    transition: all .3s;
+}
+
+.table tr:hover {
+    background-color: var(--second-color);
+    color: var(--body-color);
+    cursor: pointer;
+}
+
+
+
 
 /*=============== FOOTER ===============*/
 .footer-container {
