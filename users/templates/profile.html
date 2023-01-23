@@ -1,91 +1,99 @@
 {% include 'logged_navbar.html'%}
-<h1 class="text-center m-5">My Account Details</h1>
 
-<div class="d-grid justify-content-center card-container">
-    <div class="card mb-3" style="width: 40rem;">
-        <div class="card-body">
-        <form action="/profile/{{user.id}}/update" method="POST">
-            {% csrf_token %}
-            <div class="form-group row">
-                <label for="first_name">First Name: <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}" disabled></label>
-            </div>
-            <div class="form-group row">
-                <label for="last_name">Last Name: <input type="text" class="form-control" name="last_name" value="{{user.last_name}}" disabled></label>
-            </div>
-            <div class="form-group row">
-                <label for="email">Email: <input type="text" class="form-control" name="email" value="{{user.email}}" disabled></label>
-            </div>
-            <div class="col text-center mt-3">
-                <input type="submit" value="Update" class="btn btn-secondary" hidden>
-            </div>
-        </form>
-            <div class="col">Member since {{user.created_at}}</div>
-        </div>
-    </div>
+
+
+<div class="login-card">
+	<h1>Account Details</h1>
+	<div>
+		<form action="/profile/{{user.id}}/update" method="POST">
+			{% csrf_token %}
+			<div>
+				<label for="first_name">First Name: <input type="text" name="first_name" value="{{ user.first_name }}" disabled></label>
+			</div>
+
+			<div>
+				<label for="last_name">Last Name: <input type="text"  name="last_name" value="{{user.last_name}}" disabled></label>
+			</div>
+
+			<div>
+				<label for="email">Email: <input type="text" name="email" value="{{user.email}}" disabled></label>
+			</div>
+
+			<div>
+				<input type="submit" value="Update" disabled>
+			</div>
+
+		</form>
+		<div class="col">Member since {{user.created_at}}</div>
+	</div>
 </div>
 
 
-<div class="container table-container mt-5 action-history" style="width: 900px">
-    <h4 class="text-center">Tickets Created by {{user.first_name}}</h4>
-    <table class="table table-hover table-light ticket-table">
-    <thead>
-        <tr>
-        <th scope="col" class="text-center">Ticket ID </th>
-        <th scope="col">Subject </th>
-        <th scope="col">Ticket Status </th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for ticket in all_tickets reversed%}
-        {% if ticket.created_by.id == user.id %}
-        <tr>
-            <td class="text-center"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
-            <td><a href="/ticket/{{ticket.id}}/edit">{{ticket.subject}}</a></td>
-            <td>{{ticket.ticket_status}}</td>
-        </tr>
-        {% endif %}
-    {%endfor%}
 
-    </tbody>
-    </table>
+<div class="table-container">
+	<h4>Tickets Created by {{user.first_name}}</h4>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Ticket ID </th>
+				<th scope="col">Subject </th>
+				<th scope="col">Ticket Status </th>
+				<th scope="col">Edit </th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for ticket in all_tickets reversed%}
+			{% if ticket.created_by.id == user.id %}
+			<tr>
+				<td class="table-data"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
+				<td><a href="/ticket/{{ticket.id}}/edit">{{ticket.subject}}</a></td>
+				<td>{{ticket.ticket_status}}</td>
+				<td class="data-edit"><a href="/ticket/{{ticket.id}}/edit"><i class="ri-edit-box-line"></i></a></td>
+			</tr>
+			{% endif %}
+		{%endfor%}
+
+		</tbody>
+	</table>
 </div>
 
 <div class="container mx-auto form-container" style="width:600px">
-    {% if messages %}
-    <ul class="messages">    
-        {% for message in messages %}    
-            <ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
-        {% endfor %}
-    </ul>
-    {% endif %}
+	{% if messages %}
+	<ul class="messages">    
+		{% for message in messages %}    
+			<ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
+		{% endfor %}
+	</ul>
+	{% endif %}
 </div>
 
 <div class="container table-container mt-5 action-history" style="width: 900px">
-    <h4 class="text-center">Comments Added by {{user.first_name}}</h4>
-    <table class="table table-hover table-light ticket-table">
-    <thead>
-        <tr>
-        <th scope="col" class="text-center">Ticket ID </th>
-        <th scope="col">Subject </th>
-        <th scope="col">Ticket Comment </th>
-        <th scope="col">Remove Comment </th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for comment in all_comments reversed%}
-        {% if comment.poster.id == user.id %}
-        <tr>
-            <td class="text-center">{{comment.ticket.id}}</></td>
-            <td><a href="/ticket/{{ticket.id}}/edit">{{comment.ticket.subject}}</a></td>
-            <td>{{comment.comment}}</td>
-            <td class="text-center"><a href="/comment/{{comment.id}}/delete">Remove</a></td>
-        </tr>
-        {% endif %}
-    {%endfor%}
+	<h4 class="text-center">Comments Added by {{user.first_name}}</h4>
+	<table class="table table-hover table-light ticket-table">
+	<thead>
+		<tr>
+		<th scope="col" class="text-center">Ticket ID </th>
+		<th scope="col">Subject </th>
+		<th scope="col">Ticket Comment </th>
+		<th scope="col">Remove Comment </th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for comment in all_comments reversed%}
+			{% if comment.poster.id == user.id %}
+			<tr>
+					<td class="text-center">{{comment.ticket.id}}</></td>
+					<td><a href="/ticket/{{ticket.id}}/edit">{{comment.ticket.subject}}</a></td>
+					<td>{{comment.comment}}</td>
+					<td class="text-center"><a href="/comment/{{comment.id}}/delete">Remove</a></td>
+			</tr>
+			{% endif %}
+	{%endfor%}
 
-    </tbody>
-    </table>
+	</tbody>
+	</table>
 </div>
 
-
-{% include 'footer.html'%}
+<div>
+	<h1>FOOTER</h1>
+</div>

@@ -397,6 +397,7 @@ button {
     border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10rem;
 }
 
 .table th {
@@ -414,13 +415,15 @@ button {
 
 .table a:hover {
     color: var(--body-color);
+    letter-spacing: 0;
 }
 
 .table { 
     transition: all .3s;
 }
 
-.table tr:hover {
+
+.table-data:hover {
     background-color: var(--second-color);
     color: var(--body-color);
     cursor: pointer;
@@ -434,7 +437,7 @@ button {
     background-color: var(--second-color);
     width: 100%;
     padding: 1rem;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
 

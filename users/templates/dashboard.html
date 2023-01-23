@@ -5,19 +5,19 @@
     <div class="dashboard-cards">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title"><a href="/ticket_form" class="card-link">New Ticket</a></h5>
+                <h5 class="card-title"><a href="/ticket_form" class="card-link">Create Ticket</a></h5>
                 <p class="card-subtitle">Subheading</p>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/ticket_form" class="card-link">Create a Ticket</a>
+                <a href="/ticket_form" class="card-link">Open New Ticket</a>
             </div>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title"><a href="/profile" class="card-link">Created tickets</a></h5>
+                <h5 class="card-title"><a href="/profile" class="card-link">Tickets Submitted</a></h5>
                 <p class="card-subtitle">{{user.user_tickets.all | length}}</p>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Card Link</a>
             </div>
         </div>
 
@@ -45,29 +45,33 @@
     </div>
 </div>
 <div class="table-container">
-    <table class="table">
-    <thead>
-        <tr>
-        <th scope="col">Ticket ID </th>
-        <th scope="col">Subject </th>
-        <th scope="col">Ticket Status </th>
-        <th scope="col">Ticket Description</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for ticket in all_tickets reversed%}
-        <tr>
-            <td class="table-data"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
-            <td><a href="/ticket/{{ticket.id}}/edit">{{ticket.subject}}</a></td>
-            <td class="table-data">{{ticket.ticket_status}}</td>
-            <td>{{ticket.ticket_description}}</td>
-            <td class="data-edit"><a href="/ticket/{{ticket.id}}/edit"><i class="ri-edit-box-line"></i></a></td>
-        </tr>
-    {%endfor%}
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Ticket ID </th>
+				<th scope="col">Subject </th>
+				<th scope="col">Ticket Status </th>
+				<th scope="col">Ticket Description</th>
+				<th scope="col">Created By</th>
+			</tr>
+		</thead>
+		<tbody>
 
-    </tbody>
-    </table>
+		{% for ticket in all_tickets reversed%}
+			<tr class='table-data'>
+				<td class="table-data"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
+				<td><a href="/ticket/{{ticket.id}}/edit">{{ticket.subject}}</a></td>
+				<td class="table-data">{{ticket.ticket_status}}</td>
+				<td>{{ticket.ticket_description}}</td>
+				<td>{{ticket.created_by.email}} </td>
+				<td class="data-edit"><a href="/ticket/{{ticket.id}}/edit"><i class="ri-edit-box-line"></i></a></td>
+			</tr>
+		{%endfor%}
+
+		</tbody>
+	</table>
 </div>
+
 <div>
 {% include 'footer.html'%}
 </div>
