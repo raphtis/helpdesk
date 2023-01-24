@@ -1,35 +1,6 @@
 {% include 'logged_navbar.html'%}
 
 
-
-<div class="login-card">
-	<h1>Account Details</h1>
-	<div>
-		<form action="/profile/{{user.id}}/update" method="POST">
-			{% csrf_token %}
-			<div>
-				<label for="first_name">First Name: <input type="text" name="first_name" value="{{ user.first_name }}" disabled></label>
-			</div>
-
-			<div>
-				<label for="last_name">Last Name: <input type="text"  name="last_name" value="{{user.last_name}}" disabled></label>
-			</div>
-
-			<div>
-				<label for="email">Email: <input type="text" name="email" value="{{user.email}}" disabled></label>
-			</div>
-
-			<div>
-				<input type="submit" value="Update" disabled>
-			</div>
-
-		</form>
-		<div class="col">Member since {{user.created_at}}</div>
-	</div>
-</div>
-
-
-
 <div class="table-container">
 	<h4>Tickets Created by {{user.first_name}}</h4>
 	<table class="table">
@@ -94,6 +65,32 @@
 	</table>
 </div>
 
+<div class="login-card">
+	<h1>Account Details</h1>
+	<div>
+		<form action="/profile/{{user.id}}/update" method="POST">
+			{% csrf_token %}
+			<div>
+				<label for="first_name">First Name: <input type="text" name="first_name" value="{{ user.first_name }}" disabled></label>
+			</div>
+
+			<div>
+				<label for="last_name">Last Name: <input type="text"  name="last_name" value="{{user.last_name}}" disabled></label>
+			</div>
+
+			<div>
+				<label for="email">Email: <input type="text" name="email" value="{{user.email}}" disabled></label>
+			</div>
+
+			<div>
+				<input type="submit" value="Update" disabled>
+			</div>
+
+		</form>
+		<div class="col">Member since {{user.created_at}}</div>
+	</div>
+</div>
+
 <div>
-	<h1>FOOTER</h1>
+	{% include 'footer.html'%}
 </div>

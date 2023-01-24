@@ -1,36 +1,32 @@
 {% include 'logged_navbar.html'%}
 
-<div class="dashboard-container">
-    {% comment %} <h1>{{user.first_name}}'s Dashboard</h1> {% endcomment %}
-    <div class="dashboard-cards">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><a href="/ticket_form" class="card-link">Create Ticket</a></h5>
-                <p class="card-subtitle">Subheading</p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/ticket_form" class="card-link">Open New Ticket</a>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><a href="/profile" class="card-link">Tickets Submitted</a></h5>
-                <p class="card-subtitle">{{user.user_tickets.all | length}}</p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card Link</a>
-            </div>
-        </div>
+	{% comment %} <h1>{{user.first_name}}'s Dashboard</h1> {% endcomment %}
+	<div class="dashboard-cards">
+		<div class="quick-card">
+			<div class="card-body">
+				<h4 class="card-title"><a href="/profile" class="card-link">
+					Profile</a></h4>
+				<h2 class="quick-card-icon"><a href="/profile" class="card-link"><i class="ri-profile-line"></i></a></h2>
+			</div>
+		</div>
 
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><a href="/profile" class="card-link">Profile</a></h5>
-                <p class="card-subtitle">Card subtitle</p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/profile" class="card-link">Profile</a>
-            </div>
-        </div>
-    </div>
-</div>
+		<div class="quick-card">
+			<div class="card-body">
+				<h4 class="card-title"><a href="/profile" class="card-link">Open Tickets</a></h4>
+				<h2 class="card-subtitle"><a href="/profile" class="card-link">{{user.user_tickets.all | length}}</a></h2>
+			</div>
+		</div>
+
+		<div class="quick-card">
+			<div class="card-body">
+				<h4 class="card-title"><a href="/ticket_form" class="card-link">
+					Create Ticket</a></h4>
+				<h2 class="quick-card-icon"><a href="/ticket_form" class="card-link"><i class="ri-add-circle-line"></i></a></h2>
+			</div>
+		</div>
+	</div>
+
 
 
 <div class="container mx-auto form-container" style="width:600px">
