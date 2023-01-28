@@ -40,6 +40,7 @@
     {% endif %}
     </div>
 </div>
+
 <div class="table-container">
 	<table class="table">
 		<thead>
@@ -54,13 +55,13 @@
 		<tbody>
 
 		{% for ticket in all_tickets reversed%}
-			<tr class='table-data'>
-				<td class="table-data"><a href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
+			<tr class='table-row'>
+				<td class="table-data" id='table-id'><a title='Ticket ID' href="/ticket/{{ticket.id}}/edit">{{ticket.id}}</a></td>
 				<td><a href="/ticket/{{ticket.id}}/edit">{{ticket.subject}}</a></td>
 				<td class="table-data">{{ticket.ticket_status}}</td>
 				<td>{{ticket.ticket_description}}</td>
 				<td>{{ticket.created_by.email}} </td>
-				<td class="data-edit"><a href="/ticket/{{ticket.id}}/edit"><i class="ri-edit-box-line"></i></a></td>
+				<td class="data-edit" title="Edit Ticket"><a href="/ticket/{{ticket.id}}/edit"><i class="ri-edit-box-line"></i></a></td>
 			</tr>
 		{%endfor%}
 

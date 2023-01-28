@@ -86,6 +86,7 @@ h2 {
     margin-bottom: none;
 }
 
+
 /*=============== NAV BAR ===============*/
 nav {
     display: flex;
@@ -211,7 +212,7 @@ button {
 }
 
 /*=============== LOGIN/REG SECTION ===============*/
-
+.account-card,
 .login-card { 
     border: 2px solid lightgray;
     border-radius: 15px;
@@ -226,6 +227,13 @@ button {
     padding: 2rem;
 }
 
+
+
+.account-card span {
+    font-size: .75rem;
+}
+
+.account-card h1,
 .login-card h1 {
     font-size: 2rem;
     text-align: center;
@@ -273,8 +281,6 @@ button {
     transition: all .3s;
 }
 
-
-
 .login-button {
     cursor: pointer;
     display: block;
@@ -293,7 +299,6 @@ button {
     background-color:rgb(126, 145, 115);
     letter-spacing: 1px;
 }
-
 
 .reg-button {
     cursor: pointer;
@@ -323,7 +328,6 @@ button {
 }
 
 
-
 .button-div {
     display: flex;
     align-items: baseline;
@@ -334,6 +338,11 @@ button {
     color: inherit;
 }
 
+.button-input {
+    display: block;
+    margin: 1rem auto;
+    cursor: pointer;
+}
 
 /*=============== DASHBOARD ===============*/
 
@@ -361,7 +370,7 @@ button {
 
 .card-title,
 .card-subtitle {
-  text-align: center;
+    text-align: center;
 }
 
 .card-subtitle {
@@ -370,6 +379,7 @@ button {
 
 .quick-card:hover {
     cursor: pointer;
+    box-shadow: 0 10px 18px 0 rgba(0,0,0,0.2);
 }
 
 .quick-card-icon {
@@ -432,7 +442,8 @@ button {
 
 /*=============== TABLE SECTION ===============*/
 
-.table-container {
+.table-container,
+.profile-table {
     width: 80%;
     border: 5px solid var(--title-color);
     border-radius: 15px;
@@ -442,20 +453,22 @@ button {
 }
 
 .table th {
-    text-align: center;
+    text-align: left;
     font-size: 1.5rem;
 }
 
-.table-data {
+#table-id {
     text-align: center;
 }
+
 
 .data-edit {
     font-size: 1.5rem;
+    text-align: left;
 }
 
 .table a:hover {
-    color: var(--body-color);
+    color: var(--title-color);
     letter-spacing: 0;
 }
 
@@ -463,13 +476,20 @@ button {
     transition: all .3s;
 }
 
-
-.table-data:hover {
-    background-color: var(--second-color);
-    color: var(--body-color);
+.table-row:hover {
+    border: 2px solid gray;
+    background-color: rgb(232, 230, 226);
     cursor: pointer;
 }
 
+.profile-table {
+    margin-top: 4rem;
+}
+
+.profile-table h4 {
+    text-align: center;
+    margin-top: .75rem;
+}
 
 
 
@@ -519,6 +539,17 @@ button {
         height: auto;
         margin-top: 1.75rem;
         margin-bottom: 1.75rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .quick-card {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-body {
         margin-left: auto;
         margin-right: auto;
     }
