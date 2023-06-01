@@ -62,13 +62,16 @@ class UserManager(models.Manager):
 
 
 class User(models.Model):
-    first_name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+    
+    def __str__(self):
+        return self.email
     
 class Ticket(models.Model):
     subject = models.CharField(max_length=250)
@@ -80,8 +83,16 @@ class Ticket(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = TicketManager()
     
+    def __str__(self):
+        return self.subject
+
+    
 class Comment(models.Model):
     comment = models.CharField(max_length=255)
     poster = models.ForeignKey(User, related_name='user_comments', on_delete=models.CASCADE)
     ticket = models.ForeignKey(Ticket, related_name="post_comments", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.poster
+    
