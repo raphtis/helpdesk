@@ -51,6 +51,65 @@
         </div>
     </div>
 </div>
+
+<div class="login-card">
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <ul {% if message.tags %} class="{{ message.tags }} alert alert-warning"{% endif %}>{{ message }}</ul>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="/ticket/{{ticket.id}}/update" method="POST">
+        {%csrf_token%}
+
+        <div class="inputs">
+            <label for="subject">subject</label>
+            <input class="form-inputs" type="text" name="subject" value="{{ticket.subject}}" />
+
+            <label for="ticket_type">ticket type</label>
+            <select class="form-inputs" name="ticket_type">
+                <option selected>{{ticket.ticket_type}}</option>
+                <option value="Hardware">hardware</option>
+                <option value="Software">software</option>
+                <option value="Misc">Other</option>
+            </select>
+
+            <label for="ticket_status">ticket status</label>
+            <select class="form-inputs" name="ticket_status">
+                <option selected>{{ticket.ticket_status}}</option>
+                <option value="New">new</option>
+                <option value="In Progress">in progress</option>
+                <option value="Resolved">resolved</option>
+            </select>
+
+            <label for="ticket_description">ticket description</label>
+            <textarea type="text" name="ticket_description" class="form-inputs" placeholder="please provide a description of the issue" rows="3">{{ticket.ticket_description}}</textarea>
+
+            <div class='button-div'>
+                <button class="reg-button" type="submit">update</button>
+                <button class="reg-button" type="submit" href="/dashboard">
+                    <a href="/ticket/{{ticket.id}}/delete">delete </a>
+                </button>
+                <a href="/dashboard">cancel</a>
+            </div>
+        </div>
+
+
+    </form>
+
+
+
+</div>
+
+
+
+
+
+
+
+
 <div>
     <div class="comment-form-container">
         <div class="card mx auto" style="width:600px">
