@@ -113,7 +113,7 @@ def create_ticket(request):
             created_by = User.objects.get(id=request.session['user_id'])
         )
         messages.success(request, "Ticket successfully created.")
-    return redirect('/dashboard')
+    return render(request, 'ticket-success.html')
 
 
 # ADD TICKET FORM

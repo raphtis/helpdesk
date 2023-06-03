@@ -65,6 +65,7 @@ a:hover{
     text-decoration: underline;
 }
 
+
 input:focus {
     border: 1px solid rgb(220, 130, 95);
     background-color: rgb(226, 225, 225);
@@ -112,8 +113,9 @@ li:hover {
     color: inherit;
 }
 
-.nav-links a:hover {
-    color: inherit;
+.nav-links a:hover,
+.nav-links a:visited {
+    color: var(--text-color);
 }
 
 .title {
@@ -151,7 +153,12 @@ li:hover {
     box-shadow: 0 10px 18px 0 rgba(0,0,0,0.2);
 }
 
-.card h4 {
+.card h4,
+.card-body h4 {
+    color: var(--title-color);
+}
+
+.login-card h4 {
     color: var(--title-color);
 }
 
@@ -403,18 +410,12 @@ button {
     margin-bottom: 15px;
 }
 
-.comment-form-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-}
 
 .comment-display-container {
-    border: 3px solid #66958D;
-    width: 550px;
-    margin-bottom: 40px;
+    border: 3px solid var(--title-color);
+    width: auto;
     padding-top: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .user_tickets li {

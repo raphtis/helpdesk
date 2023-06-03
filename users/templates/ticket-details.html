@@ -10,47 +10,7 @@
     </ul>
     {% endif %}
 </div>
-<div class="ticket-container">
-    <div class="card mx-auto" style="width:600px">
-        <div class="card-body">
-            <form action="/ticket/{{ticket.id}}/update" method="POST">
-            {% csrf_token %}
-                <div class="form-group row">
-                    <label for="subject">Subject <input type="text" name="subject" class="form-control" value="{{ticket.subject}}"></label>
-                </div>
-                <hr />
-                <div class="form-group row">
-                    <label for="ticket_type">Ticket Type</label>
-                    <select class="form-select" aria-label="Default select example" name="ticket_type">
-                        <option selected>{{ticket.ticket_type}}</option>
-                        <option value="Hardware">Hardware</option>
-                        <option value="Software">Software</option>
-                        <option value="Misc">Misc.</option>
-                    </select>
-                </div>
-                <hr />
-                <div class="form-group row">
-                    <label for="ticket_status">Ticket Status</label>
-                    <select class="form-select" aria-label="Default select example" name="ticket_status">
-                        <option selected>{{ticket.ticket_status}}</option>
-                        <option value="New">New</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Resolved">Resolved</option>
-                    </select>
-                </div>
-                <hr />
-                <div class="form-group row">
-                    <label for="ticket_description">Ticket Description</label><textarea type="text" name="ticket_description" class="form-control" placeholder="Ticket Description" rows="3">{{ticket.ticket_description}}</textarea>
-                </div>
-                <div class="col text-center mt-3">
-                    <button type="submit" class="btn btn-secondary">Update</button>
-                    <button class="btn btn-secondary" href="/dashboard"><a href="/dashboard" style="color: #F8E0D3;">Cancel</a></button>
-                    <button class="btn btn-secondary" href="/dashboard"><a href="/ticket/{{ticket.id}}/delete" style="color: #F8E0D3;">Delete</a></button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 
 <div class="login-card">
     {% if messages %}
@@ -95,47 +55,33 @@
                 <a href="/dashboard">cancel</a>
             </div>
         </div>
-
-
     </form>
-
-
-
 </div>
 
 
+<div class="login-card">
 
-
-
-
-
-
-<div>
-    <div class="comment-form-container">
-        <div class="card mx auto" style="width:600px">
-            <div class="card-body">
-                <h4>Ticket Comments</h4>
-                <form action="/add_comment/{{ticket.id}}/" method="POST">
-                {% csrf_token %}
-                <div class="form-group row">
-                    <label for="comment">Enter a comment</label><textarea type="text" name="comment" class="form-control sm" placeholder="Provide update or additional info here." rows="3"></textarea>
-                </div>
-                <div class="col text-center mt-3">
-                    <input type="submit" value="Submit" class="btn btn-secondary">
-                    <button class="btn btn-secondary"><a href="/ticket/{{ticket.id}}/edit" style="color: #F8E0D3;">Cancel</a></button>
-                </div>
-                </form>
-            </div>
-            <div class="comment-display-container container mx auto">
-                    <h5>Updates - </h5>
-                {%for comment in ticket.post_comments.all%}
-                    <h6>Comment by: </h6>
-                    <p>{{comment.poster.first_name}} {{comment.poster.last_name}} -
-                    {{ comment.comment}}</p>
-                {% endfor %}
-            </div>
+    <h4 style="text-align: center">activity log</h4>
+    <form action="/add_comment/{{ticket.id}}/" method="POST">
+        {% csrf_token %}
+        <div class="inputs">
+            <label for="comment">enter an update</label>
+            <textarea class="form-inputs" type"text" name="comment" placeholder="provide an update or additional information here" rows="3" required></textarea>
         </div>
-    </div>        
+
+        <div class="button-div">
+            <button class="reg-button">submit</button>
+            <a href="/dashboard">cancel</a>
+        </div>
+    </form>
+
+    <div class="comment-display-container container">
+        <h5>updates - </h5>
+        {% for comments in ticket.post_comments.all%}
+            <h6>update by: </h6>
+            <p>{{comment.poster.first_name}} {{comment.poster.last_name}} - {{comment.comment}}</p>
+        {% endfor %}
+    </div>
 </div>
 
 <div>
