@@ -77,7 +77,7 @@
 
     <div class="comment-display-container container">
         <h5>updates - </h5>
-        {% for comments in ticket.post_comments.all%}
+        {% for comment in ticket.post_comments.all%}
             <h6>update by: </h6>
             <p>{{comment.poster.first_name}} {{comment.poster.last_name}} - {{comment.comment}}</p>
         {% endfor %}

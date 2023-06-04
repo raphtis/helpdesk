@@ -2,14 +2,14 @@
 
 
 <div class="profile-table">
-	<h4>Tickets Created by {{user.first_name}}</h4>
+	<h4>tickets created by {{user.first_name}}</h4>
 	<table class="table">
 		<thead>
 			<tr>
-				<th scope="col" id='table-id'>Ticket ID </th>
-				<th scope="col">Subject </th>
-				<th scope="col">Ticket Status </th>
-				<th scope="col">Edit </th>
+				<th scope="col" id='table-id'>ticket ID </th>
+				<th scope="col">subject </th>
+				<th scope="col">ticket status </th>
+				<th scope="col">edit </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,14 +40,14 @@
 </div>
 
 <div class="profile-table">
-	<h4 class="text-center">Comments Added by {{user.first_name}}</h4>
+	<h4 class="text-center">comments added by {{user.first_name}}</h4>
 	<table class="table">
 		<thead>
 			<tr>
-			<th scope="col" id='table-id'>Ticket ID </th>
-			<th scope="col">Subject </th>
-			<th scope="col">Ticket Comment </th>
-			<th scope="col">Remove</th>
+			<th scope="col" id='table-id'>ticket id</th>
+			<th scope="col">subject </th>
+			<th scope="col">ticket comment </th>
+			<th scope="col">remove</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -66,23 +66,23 @@
 </div>
 
 <div class="account-card">
-	<h1>Account Details</h1>
+	<h1>account details</h1>
 	<div>
 		<form action="/profile/{{user.id}}/update" method="POST">
 			{% csrf_token %}
 
 			<div class="inputs">
-				<label for="first_name">First Name: </label>
+				<label for="first_name">first name: </label>
 					<input class="form-inputs" type="text" name="first_name" value="{{ user.first_name }}" disabled>
 			</div>
 
 			<div class="inputs">
-				<label for="last_name">Last Name: </label>
+				<label for="last_name">last name: </label>
 					<input class="form-inputs" type="text" name="last_name" value="{{ user.last_name }}" disabled>
 			</div>
 
 			<div class="inputs">
-				<label for="email">Email: </label>
+				<label for="email">email: </label>
 					<input class="form-inputs" type="email" name="email" value="{{ user.email }}" disabled>
 			</div>
 
@@ -93,10 +93,18 @@
 		</form>
 
 		<div class"inputs">
-			<span>Member since {{user.created_at}}</span>
+			<span>member since {{user.created_at}}</span>
 		</div>
 	</div>
 </div>
+
+{% comment %} <div class='login-card'>
+	<video width="320" height="240" controls>
+		<source src="/static/img/helpdesk-v2.mov" type="video/mov">
+		<source src="/static/img/helpdesk-v2.mov" type="video/ogg">
+	Your browser does not support the video tag.
+	</video>
+</div> {% endcomment %}
 
 <div>
 	{% include 'footer.html'%}
